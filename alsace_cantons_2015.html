@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="d3.tip.js"></script>
+
+</head>
+<style>
+
+.c15 {
+  fill: none;
+  stroke: #777;
+  stroke-linejoin: round;
+  stroke-opacity:0.9;
+}
+
+.c14 {
+  fill: none;
+  stroke: #ff0000;
+  stroke-linejoin: round;
+  stroke-dasharray: 2,2;
+  stroke-opacity:0.3;
+}
+
+.point{
+  opacity:1;
+  fill:#696969;
+}
+
+.label-villes {
+  fill: #696969;
+  fill-opacity: 1;
+  font-size: 10px;
+  font-weight: 250;
+  text-anchor: middle;
+}
+
+text {
+  font-family: Arial;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+#container{
+  width:500px;
+  height:1000px;
+  position: absolute;
+}
+#carte{
+  width:500px;
+  height: 950px;
+  margin-top:-30px;
+  position: absolute;
+}
+
+</style>
+
+<body>
+
+
+<div id="container">
+
+ <div id="carte"></div>
+
+ </div>
+
+ <script>
+
+ var width = 500,
+    height = 950;
+
+ var proj = d3.geo.mercator()
+    .center([7.56, 48.27])
+    .scale(20000)
+    .translate([width / 2, height / 2]);
+
+ var path = d3.geo.path().projection(proj), circle = d3.geo.circle();
+
+ var svg = d3.select("#carte").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+ queue()
+    .defer(d3.json,"cantons_alsace_2015.json")
+    .defer(d3.json,"cantons_alsace_2014.json")
+    .defer(d3.json,"alsace_villes.json")
+    .await(ready);
+
+function ready(error,cantons015,cantons014,villes) {
+// on entame les festivités avec notre fond de carte
+  
+
+
+  svg.append("g").attr("class","cantons14") // le nom de cette classe n'a pas d'importance
+        .selectAll("path")
+        .data(cantons014.features)
+        .enter()
+          .append("path")
+          .attr("class", "c14")
+          .attr("d", path)
+
+
+  svg.append("g").attr("class","cantons15") // le nom de cette classe n'a pas d'importance
+        .selectAll("path")
+        .data(cantons015.features)
+        .enter()
+          .append("path")
+          .attr("class", "c15")
+          .attr("d", path)
+
+  svg.append("g").attr("class","communes")
+        .selectAll("path")
+        .data(villes.features)
+        .enter()
+        .append("path")
+        .datum(function(d,i){
+          var origin = d.geometry.coordinates
+          var angle = 0.007
+          return d3.geo.circle().angle(angle).origin(origin)(villes.features)
+          }
+        )
+        .attr("class", "point")
+        .attr("d", path)
+
+  svg.selectAll(".label-villes")
+      .data(villes.features)
+        .enter().append("text")
+      .attr("class", "label-villes")
+      .attr("transform", function(d) { return "translate(" + proj(d.geometry.coordinates) + ")"; })
+      .attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
+      .attr("dy", ".30em")
+      .style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; })
+      .text(function(d) { return d.properties.Nom; });
+
+ };
+
+
+ </script>
+
+ </body>
