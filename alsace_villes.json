@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Nom": "Strasbourg", "Latitude": 7.767530, "Longitude": 48.571270 }, "geometry": { "type": "Point", "coordinates": [ 7.76753, 48.57127 ] } },
+{ "type": "Feature", "properties": { "Nom": "Haguenau", "Latitude": 7.830100, "Longitude": 48.841700 }, "geometry": { "type": "Point", "coordinates": [ 7.8301, 48.8417 ] } },
+{ "type": "Feature", "properties": { "Nom": "Molsheim", "Latitude": 7.499500, "Longitude": 48.544720 }, "geometry": { "type": "Point", "coordinates": [ 7.4995, 48.54472 ] } },
+{ "type": "Feature", "properties": { "Nom": "Saverne", "Latitude": 7.342060, "Longitude": 48.740230 }, "geometry": { "type": "Point", "coordinates": [ 7.34206, 48.74023 ] } },
+{ "type": "Feature", "properties": { "Nom": "Selestat", "Latitude": 7.462250, "Longitude": 48.248110 }, "geometry": { "type": "Point", "coordinates": [ 7.46225, 48.24811 ] } },
+{ "type": "Feature", "properties": { "Nom": "Wissembourg", "Latitude": 7.961750, "Longitude": 49.018460 }, "geometry": { "type": "Point", "coordinates": [ 7.96175, 49.01846 ] } },
+{ "type": "Feature", "properties": { "Nom": "Colmar", "Latitude": 7.384690, "Longitude": 48.109940 }, "geometry": { "type": "Point", "coordinates": [ 7.38469, 48.10994 ] } },
+{ "type": "Feature", "properties": { "Nom": "Mulhouse", "Latitude": 7.325700, "Longitude": 47.749160 }, "geometry": { "type": "Point", "coordinates": [ 7.3257, 47.74916 ] } },
+{ "type": "Feature", "properties": { "Nom": "Altkirch", "Latitude": 7.244840, "Longitude": 47.621030 }, "geometry": { "type": "Point", "coordinates": [ 7.24484, 47.62103 ] } },
+{ "type": "Feature", "properties": { "Nom": "Thann", "Latitude": 7.095020, "Longitude": 47.813910 }, "geometry": { "type": "Point", "coordinates": [ 7.09502, 47.81391 ] } },
+{ "type": "Feature", "properties": { "Nom": "Guebwiller", "Latitude": 7.210140, "Longitude": 47.909670 }, "geometry": { "type": "Point", "coordinates": [ 7.21014, 47.90967 ] } },
+{ "type": "Feature", "properties": { "Nom": "Ribeauville", "Latitude": 7.286720, "Longitude": 48.206510 }, "geometry": { "type": "Point", "coordinates": [ 7.28672, 48.20651 ] } }
+]
+}
